@@ -256,6 +256,10 @@ class FlappyGame:
         child.brain.mutate()
         return child
 
+    def pick_best(self):
+        newlist = sorted(self.saved_birds, key=lambda x: x.fitness, reverse=True)
+        return newlist[0], newlist[1]
+
     # Function for calculating fitness value for birds
     def calculate_fitness(self):
         FitnessSum = 0
@@ -275,10 +279,14 @@ class FlappyGame:
         random_population = random.uniform(RANDOMNESS[0], RANDOMNESS[1])
         random_population = int(random_population * self.population)
 
-        for i in range(self.population - random_population):
+        for i in range(2, self.population - random_population-2):
             new_birds.insert(i, self.pick_one())
 
         for i in range(random_population):
             new_birds.insert(random.randint(0, self.population), Bird())
+
+        best_birds = self.pick_best()
+        new_birds.insert(0, best_birds[0])
+        new_birds.insert(1, best_birds[1])
 
         return new_birds
