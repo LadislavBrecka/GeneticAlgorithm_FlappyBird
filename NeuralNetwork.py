@@ -81,8 +81,6 @@ class NeuralNetwork:
                     self.who[i][j] = np.random.normal(0, 1)
 
 
-pass
-
 
 
 
