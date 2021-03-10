@@ -244,7 +244,6 @@ class FlappyGame:
 # GA stuff, selecting the best bird for reproduction ######
 
     # Ruletta algorithm
-    # treba vybrat najlepsieho
     def pick_one(self):
         index = 0
         r = np.random.rand()
